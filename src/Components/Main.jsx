@@ -25,13 +25,15 @@ function Main() {
 
     const [ingredients, setIngredients] = useState([]);
 
-    const [recipe, setRecipe] = useState("");
+    const [recipe, setRecipe] = useState(() => {
+        return localStorage.getItem("recipe") || "";
+    });
 
     async function getRecipe() {
         setLoading(true);
         setRecipe("");
-        // setRecipeShown(prevState => !prevState);
         const recipeMarkdown = await getRecipeFromMistral(ingredients);
+        localStorage.setItem("recipe", recipeMarkdown);
         setRecipe(recipeMarkdown);
         setLoading(false);
         }
@@ -76,6 +78,7 @@ function Main() {
                 {loading && <p className="loading-message">🧠 Chef Claude is thinking...</p>}
                 {recipe && !loading && <ClaudeRecipe recipe={recipe} />}
 
+                {recipe && !loading && <button className="clear-recipe-btn" onClick={() => setRecipe("")}>Clear recipe</button>}
 
             </main>
         </>

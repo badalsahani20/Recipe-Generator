@@ -234,4 +234,21 @@ main{
   100% { opacity: 0.2; }
 }
 
+.clear-recipe-btn {
+  border: none;
+  border-radius: 6px;
+  background-color: #b5654f;
+  box-shadow: 0 1px 2px #0000000d;
+  color: #fafaf8;
+  padding: 9px 17px;
+  font-family: Inter, sans-serif;
+  font-size: .875rem;
+  cursor: pointer;
+  min-height: 38px;
+}
+
+.clear-recipe-btn:hover {
+  background-color: #e15d38;
+}
+
 
